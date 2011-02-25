@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'rubygems' unless defined?(Gem)
+
+pumpkin_path = File.expand_path('../../lib', __FILE__)
+$:.unshift(pumpkin_path) if File.directory?(pumpkin_path) && !$:.include?(pumpkin_path)
+
+require 'pumpkin'
+Pumpkin::Runner.start(ARGV)
