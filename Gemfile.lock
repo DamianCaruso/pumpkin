@@ -27,9 +27,9 @@ GEM
     plucky (0.3.6)
       mongo (~> 1.1)
     rack (1.2.1)
+    rack-test (0.5.7)
+      rack (>= 1.0)
     rake (0.8.7)
-    ramdiv-mongo_mapper_acts_as_tree (0.1.2)
-      mongo_mapper (>= 0.6.8)
     rcov (0.9.9)
     rspec (2.3.0)
       rspec-core (~> 2.3.0)
@@ -60,7 +60,8 @@ DEPENDENCIES
   database_cleaner
   i18n
   jeweler (~> 1.5.2)
-  ramdiv-mongo_mapper_acts_as_tree
+  mongo_mapper
+  rack-test (~> 0.5.7)
   rcov
   rspec (~> 2.3.0)
   sinatra
