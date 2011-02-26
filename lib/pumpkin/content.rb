@@ -10,7 +10,7 @@ class Pumpkin::Content
   timestamps!
   
   #Callbacks
-  before_create :set_path
+  before_create :set_path, :set_depth
   
   #Relationships
   belongs_to :parent, :class_name => 'Pumpkin::Content'
