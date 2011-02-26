@@ -14,6 +14,15 @@ module Pumpkin
       prepare_logger
       Pumpkin::Application.run!(options.symbolize_keys)
     end
+    
+    desc "console", "Boots up Pumpkin irb console"
+    def console
+      ARGV.clear
+      puts "=> Loading #{options.environment} console (Pumpkin #{Pumpkin.version})"
+      require "irb"
+      require "irb/completion"
+      IRB.start
+    end
 
     desc "version", "Show Pumpkin Version"
     map "-v" => :version, "--version" => :version

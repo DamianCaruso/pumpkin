@@ -1,4 +1,6 @@
 module Pumpkin
+  autoload :Content, 'pumpkin/content'
+  
   module LoggerHelper
     def logger
       Pumpkin.logger
