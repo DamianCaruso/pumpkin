@@ -17,10 +17,15 @@ class Pumpkin::Content
   
   #Validations
   validates_format_of     :node_id, :with => /\A\w[\w\.+\-_@ ]+$/
-  validates_uniqueness_of :node_id, :scope => :parent_id, :case_sensitive => false  
+  validates_uniqueness_of :node_id, :scope => :parent_id, :case_sensitive => false
   
   def self.root
     where(:depth => 0).limit(1).first
+  end
+  
+  def self.find_by_path(path)
+    path = Array(path) unless path.is_a?(Array)
+    where(:path => /#{path.join(PATH_SEPARATOR)}/i).limit(1).first
   end
   
   def root?

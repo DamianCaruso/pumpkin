@@ -34,4 +34,16 @@ describe Pumpkin::Content do
       end
     end
   end
+  
+  describe "#find_by_path" do
+    before do
+      @child_1 = Pumpkin::Content.create!(:node_id => "Child_1", :parent => @root)
+      @child_1_1 = Pumpkin::Content.create!(:node_id => "Child_1_1", :parent => @child_1)
+    end
+    
+    it "should return the node with the provided path" do
+      node = Pumpkin::Content.find_by_path(["root","child_1","Child_1_1"])
+      node.should eq(@child_1_1)
+    end
+  end
 end
