@@ -1,5 +1,5 @@
 class Pumpkin::Application
-  get "/*" do
+  get "/*.json" do
     content_type :json
     path = params[:splat].first.split("/")
     node = Pumpkin::Content.find_by_path(path)

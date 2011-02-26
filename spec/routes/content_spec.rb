@@ -8,7 +8,7 @@ describe "content" do
       before(:each) do        
         Pumpkin::Content.should_receive(:find_by_path).with(instance_of(Array)).once.and_return(node)
         node.should_receive(:to_json).and_return({}.to_json)
-        get '/'
+        get '/route.json'
       end
 
       it { last_response.should be_ok }
@@ -18,7 +18,7 @@ describe "content" do
     context "when not found" do
       before(:each) do
         Pumpkin::Content.should_receive(:find_by_path).with(instance_of(Array)).once.and_return(nil)
-        get '/'
+        get '/route.json'
       end
 
       it { last_response.not_found?.should be_true }
