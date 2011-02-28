@@ -10,7 +10,7 @@ class Pumpkin::Content
   timestamps!
   
   #Callbacks
-  before_create :set_path, :set_depth
+  before_create :set_path
   
   #Relationships
   belongs_to :parent, :class_name => 'Pumpkin::Content'
@@ -48,9 +48,6 @@ class Pumpkin::Content
     else
       self.path = "#{self.node_id.downcase}"
     end
-  end
-  
-  def set_depth
     self.depth = self.path.count(PATH_SEPARATOR)
   end
   

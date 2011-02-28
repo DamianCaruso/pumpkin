@@ -1,5 +1,6 @@
 source "http://rubygems.org"
 
+gem "builder"
 gem "carrierwave"
 gem "mongo_mapper"
 gem "bson_ext"
