@@ -1,17 +1,15 @@
 class Pumpkin::Application
-  get "/*.json" do
-    content_type :json
+  get "/*.json" do    
     path = params[:splat].first.split("/")
     node = Pumpkin::Content.find_by_path(path)
     raise Sinatra::NotFound if node.nil?
-    node.to_json
+    json :content
   end
   
-  get "/*.xml" do
-    content_type :xml
+  get "/*.xml" do    
     path = params[:splat].first.split("/")
-    node = Pumpkin::Content.find_by_path(path)
-    raise Sinatra::NotFound if node.nil?
-    node.to_xml
+    @content = Pumpkin::Content.find_by_path(path)
+    raise Sinatra::NotFound if @content.nil?    
+    nokogiri :content
   end
 end

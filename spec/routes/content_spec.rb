@@ -3,15 +3,14 @@ require 'spec_helper'
 describe "content" do
   describe "GET resource" do
     describe "when found" do
-      let(:node) { mock('Pumpkin::Content') }
+      let(:content) { mock('Pumpkin::Content') }
       
       before(:each) do
-        Pumpkin::Content.should_receive(:find_by_path).with(instance_of(Array)).once.and_return(node)
+        Pumpkin::Content.should_receive(:find_by_path).with(instance_of(Array)).once.and_return(content)
       end
       
       context "json response" do
-        before(:each) do        
-          node.should_receive(:to_json).and_return({}.to_json)
+        before(:each) do
           get '/route.json'
         end
 
@@ -20,8 +19,7 @@ describe "content" do
       end
       
       context "xml response" do
-        before(:each) do        
-          node.should_receive(:to_xml).and_return({}.to_xml)
+        before(:each) do          
           get '/route.xml'
         end
 
