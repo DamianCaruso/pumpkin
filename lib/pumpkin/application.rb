@@ -4,9 +4,6 @@ def root_path(*args)
   File.join(File.dirname(__FILE__), *args)
 end
 
-require 'logger'
-class ::Logger; alias_method :write, :<<; end
-
 require "bundler"
 Bundler.setup(:default, RACK_ENV.to_sym)
 Bundler.require

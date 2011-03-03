@@ -1,10 +1,11 @@
 source "http://rubygems.org"
 
-gem "builder"
 gem "carrierwave"
 gem "mongo_mapper"
 gem "bson_ext"
 gem "i18n"
+gem "json_builder"
+gem "nokogiri"
 gem "thin"
 gem "thor"
 

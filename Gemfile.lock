@@ -1,6 +1,21 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    abstract (1.0.0)
+    actionpack (3.0.4)
+      activemodel (= 3.0.4)
+      activesupport (= 3.0.4)
+      builder (~> 2.1.2)
+      erubis (~> 2.6.6)
+      i18n (~> 0.4)
+      rack (~> 1.2.1)
+      rack-mount (~> 0.6.13)
+      rack-test (~> 0.5.7)
+      tzinfo (~> 0.3.23)
+    activemodel (3.0.4)
+      activesupport (= 3.0.4)
+      builder (~> 2.1.2)
+      i18n (~> 0.4)
     activesupport (3.0.4)
     bson (1.2.4)
     bson_ext (1.2.4)
@@ -10,6 +25,8 @@ GEM
     daemons (1.1.0)
     database_cleaner (0.6.4)
     diff-lcs (1.1.2)
+    erubis (2.6.6)
+      abstract (>= 1.0.0)
     eventmachine (0.12.10)
     git (1.2.5)
     i18n (0.5.0)
@@ -19,15 +36,23 @@ GEM
       rake
     jnunemaker-validatable (1.8.4)
       activesupport (>= 2.3.4)
+    json (1.5.1)
+    json_builder (2.0.6)
+      actionpack (~> 3.0.0)
+      activesupport (~> 3.0.0)
+      json
     mongo (1.2.4)
       bson (>= 1.2.4)
     mongo_mapper (0.8.6)
       activesupport (>= 2.3.4)
       jnunemaker-validatable (~> 1.8.4)
       plucky (~> 0.3.6)
+    nokogiri (1.4.4)
     plucky (0.3.6)
       mongo (~> 1.1)
     rack (1.2.1)
+    rack-mount (0.6.13)
+      rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
     rake (0.8.7)
@@ -49,6 +74,7 @@ GEM
       rack (>= 1.0.0)
     thor (0.14.6)
     tilt (1.2.2)
+    tzinfo (0.3.24)
     yard (0.6.4)
 
 PLATFORMS
@@ -56,13 +82,14 @@ PLATFORMS
 
 DEPENDENCIES
   bson_ext
-  builder
   bundler (~> 1.0.0)
   carrierwave
   database_cleaner
   i18n
   jeweler (~> 1.5.2)
+  json_builder
   mongo_mapper
+  nokogiri
   rack-test (~> 0.5.7)
   rcov
   rspec (~> 2.3.0)
