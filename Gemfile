@@ -4,12 +4,10 @@ gem "carrierwave"
 gem "mongo_mapper"
 gem "bson_ext"
 gem "i18n"
+gem "sinatra"
 gem "json_builder"
 gem "nokogiri"
-gem "thin"
-gem "thor"
-
-gem "sinatra", :require => "sinatra/base"
+gem "thin"  
 
 group :development, :test do
   gem "rspec", "~> 2.3.0"

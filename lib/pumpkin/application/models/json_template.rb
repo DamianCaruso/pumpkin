@@ -1,5 +1,3 @@
-require 'tilt'
-
 module Tilt
   # Json template implementation. See:
   # https://github.com/dewski/json_builder

@@ -2,8 +2,10 @@ ENV["RACK_ENV"] = "test"
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require "pumpkin"
-require "rack/test"
+require 'rspec'
+require 'rack/test'
+
+require 'pumpkin/application'
 
 Pumpkin::Application.run! if Pumpkin::Application.run?
 

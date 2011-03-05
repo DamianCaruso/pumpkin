@@ -11,14 +11,16 @@ module Pumpkin
     method_option :environment, :type => :string,  :aliases => "-E", :required => true, :default => "development", :desc => "Framework environment (default: development)"
     method_option :debug,       :type => :boolean, :aliases => "-D", :default => false, :desc => "DEBUG mode"
     def start
+      require "pumpkin/application"
       prepare_logger
       Pumpkin::Application.run!(options.symbolize_keys)
     end
     
     desc "console", "Boots up Pumpkin irb console"
     def console
+      require "pumpkin"
       ARGV.clear
-      puts "=> Loading #{options.environment} console (Pumpkin #{Pumpkin.version})"
+      puts "=> Loading Pumpkin #{options.environment} console"
       require "irb"
       require "irb/completion"
       IRB.start
@@ -27,7 +29,7 @@ module Pumpkin
     desc "version", "Show Pumpkin Version"
     map "-v" => :version, "--version" => :version
     def version
-      puts "Pumpkin #{Pumpkin.version}"
+      puts "Pumpkin #{File.read(File.dirname(__FILE__) + '/../../VERSION').strip}"
     end
 
     protected
@@ -44,7 +46,7 @@ module Pumpkin
         logger.level = options.debug? ? Logger::DEBUG : Logger::INFO
         logger.formatter = proc { |severity, datetime, progname, msg|
           "[#{datetime.strftime('%Y-%m-%d %H:%M:%S')}] #{severity}  #{msg}\n"
-        }        
+        }
         Pumpkin.logger = logger
       end
       
