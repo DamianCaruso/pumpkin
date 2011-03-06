@@ -1,7 +1,5 @@
-require 'bundler'
-Bundler.setup(:default, RACK_ENV.to_sym) if defined?(Bundler)
 require 'mongo_mapper'
-require 'carrierwave'
+require 'joint'
 
 Dir[File.join(File.dirname(__FILE__),'extensions/**/*.rb')].each {|f| require f}
 

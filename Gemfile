@@ -1,13 +1,14 @@
 source "http://rubygems.org"
 
-gem "carrierwave"
 gem "mongo_mapper"
 gem "bson_ext"
 gem "i18n"
+gem "joint"
 gem "sinatra"
 gem "json_builder"
 gem "nokogiri"
-gem "thin"  
+gem "thin"
+gem "thor"
 
 group :development, :test do
   gem "rspec", "~> 2.3.0"

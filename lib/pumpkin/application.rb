@@ -1,4 +1,7 @@
 RACK_ENV = ENV["RACK_ENV"] ||= "development" unless defined? RACK_ENV
+require 'bundler'
+Bundler.setup(:default, RACK_ENV.to_sym) if defined?(Bundler)
+
 require 'pumpkin'
 require 'logger'
 

@@ -1,4 +1,5 @@
 require 'thor'
+require 'pumpkin/application'
 
 module Pumpkin
   class Runner < Thor
@@ -10,15 +11,13 @@ module Pumpkin
     method_option :port,        :type => :numeric, :aliases => "-p", :required => true, :default => 3000, :desc => "Use PORT"
     method_option :environment, :type => :string,  :aliases => "-E", :required => true, :default => "development", :desc => "Framework environment (default: development)"
     method_option :debug,       :type => :boolean, :aliases => "-D", :default => false, :desc => "DEBUG mode"
-    def start
-      require "pumpkin/application"
+    def start      
       prepare_logger
       Pumpkin::Application.run!(options.symbolize_keys)
     end
     
     desc "console", "Boots up Pumpkin irb console"
-    def console
-      require "pumpkin"
+    def console      
       ARGV.clear
       puts "=> Loading Pumpkin #{options.environment} console"
       require "irb"

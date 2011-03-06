@@ -33,6 +33,24 @@ describe Pumpkin::Content do
         expect { Pumpkin::Content.create!(:node_id => "child_1", :parent => @root) }.to raise_error(MongoMapper::DocumentNotValid)
       end
     end
+    
+    context "when the node has an attachment" do
+      before do
+        @node = Pumpkin::Content.create!(:node_id => "content_with_attachment", :parent => @root, :photo => File.new(File.expand_path('spec/support/empty.gif')))
+      end
+      
+      it "should save the attachment properties" do
+        @node.photo.id.should_not be_nil
+        @node.photo.name.should eq("empty.gif")
+        @node.photo.size.should_not be_nil
+        @node.photo.type.should eq("image/gif")
+      end
+      
+      it "should respond to attachment method when loaded from database" do
+        MongoMapper::Plugins::IdentityMap.clear
+        Pumpkin::Content.find_by_path(["root","content_with_attachment"]).respond_to?(:photo).should be_true
+      end
+    end
   end
   
   describe "#find_by_path" do
